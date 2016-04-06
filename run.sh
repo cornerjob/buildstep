@@ -9,6 +9,7 @@ if [ ! -d "/app" ]; then
 		git clone "$GIT_REPO" /app
 		if [ -n "$GIT_REPO_TAG" ]; then
 		    pushd /app
+		    git fetch
 		    git checkout $GIT_REPO_TAG
 		    popd
 		fi
