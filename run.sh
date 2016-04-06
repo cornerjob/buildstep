@@ -7,6 +7,11 @@ fi
 if [ ! -d "/app" ]; then
 	if [ -n "$GIT_REPO" ]; then
 		git clone "$GIT_REPO" /app
+		if [ -n "$GIT_REPO_TAG" ]; then
+		    pushd /app
+		    git checkout -b branch-$GIT_REPO_TAG $GIT_REPO_TAG
+		    popd
+		fi
 		/build/builder
 	else
 		echo "No \$GIT_REPO environment variable defined"
