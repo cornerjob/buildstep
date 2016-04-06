@@ -9,7 +9,8 @@ if [ ! -d "/app" ]; then
 		git clone "$GIT_REPO" /app
 		if [ -n "$GIT_REPO_TAG" ]; then
 		    pushd /app
-		    git checkout -b branch-$GIT_REPO_TAG $GIT_REPO_TAG
+		    git fetch
+		    git checkout $GIT_REPO_TAG
 		    popd
 		fi
 		/build/builder
